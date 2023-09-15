@@ -1,4 +1,5 @@
 import {
+  Avatar,
   Box,
   Button,
   Container,
@@ -47,7 +48,7 @@ export default function Layout({ children, pageIcon: Icon, pageTitle }: Props) {
   }, [pathname]);
 
   return (
-    <Box w={"100vw"} h={"100vh"} bg={"gray.100"}>
+    <Box w={"100vw"} h={"100vh"} bg={"#fafafa"}>
       <Box h={"60px"} bg="white" shadow={"md"} zIndex={100}>
         <Flex
           justifyContent={"space-between"}
@@ -83,7 +84,24 @@ export default function Layout({ children, pageIcon: Icon, pageTitle }: Props) {
             </Flex>
           </Flex>
 
-          <Flex gap={5}></Flex>
+          <Flex
+            gap={5}
+            align={"center"}
+            w={["fit-content", "fit-content", "250px", "250px", "250px"]}
+          >
+            <Avatar size={"sm"} />
+            <Stack
+              spacing={4}
+              display={["none", "none", "flex", "flex", "flex"]}
+            >
+              <Text fontWeight={600} lineHeight={"0"}>
+                NK Informática
+              </Text>
+              <Text fontWeight={300} lineHeight={"0"} fontSize={"xs"}>
+                40.526.622/0001-72
+              </Text>
+            </Stack>
+          </Flex>
         </Flex>
       </Box>
 
@@ -110,6 +128,7 @@ export default function Layout({ children, pageIcon: Icon, pageTitle }: Props) {
             overflowX={"hidden"}
             overflowY={"auto"}
             pb={"40px"}
+            borderWidth={"1px"}
           >
             <Scrollbars autoHide>
               <Stack spacing={3} px={drawerOpen ? 4 : 2} py={4}>
@@ -270,13 +289,22 @@ export default function Layout({ children, pageIcon: Icon, pageTitle }: Props) {
                 roundedBottomLeft={"none"}
                 w={drawerOpen ? "280px" : "65px"}
                 transition={"all .3s"}
+                colorScheme="blackAlpha"
               />
             </Tooltip>
           </Box>
         </Flex>
-        <Box p={4} w={"100%"} maxH={"100%"} overflowY={"auto"}>
+        <Box
+          w={"100%"}
+          maxH={"100%"}
+          overflowY={"auto"}
+          overflowX={"hidden"}
+          minW={"300px"}
+        >
           <Scrollbars>
-            <Container maxW={"6xl"}>{children}</Container>
+            <Container maxW={"6xl"} px={4} pt={8} overflowX={"hidden"}>
+              {children}
+            </Container>
           </Scrollbars>
         </Box>
       </Flex>
