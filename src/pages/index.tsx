@@ -13,7 +13,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { Layout } from "../components";
-import { FloppyDisk, House, SignIn } from "@phosphor-icons/react";
+import { House, WhatsappLogo } from "@phosphor-icons/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 
@@ -23,6 +23,7 @@ import "swiper/css/pagination";
 import Ecommerce from "../assets/ecommerce.jpg";
 import Gestao from "../assets/gestao.png";
 import Igreja from "../assets/igreja.webp";
+import { useNavigate } from "react-router-dom";
 
 export default function IndexPage() {
   function handldeWelcome(hour: number): string {
@@ -32,13 +33,15 @@ export default function IndexPage() {
     return "Bom dia!";
   }
 
+  const navigate = useNavigate();
+
   return (
     <Layout pageTitle="Início" pageIcon={House}>
       <Stack textAlign={"center"}>
         <Heading fontFamily={"body"} color={"blue.900"} fontWeight={800}>
           {handldeWelcome(new Date().getHours())}
         </Heading>
-        <Text mt={8}>
+        <Text mt={4}>
           A NK Systems é uma empresa que oferece soluções de software para
           gestão empresarial e e-commerce. Além disso, a empresa também trabalha
           com sistemas de gerenciamento de igrejas. Através de seus softwares, a
@@ -58,19 +61,11 @@ export default function IndexPage() {
           align={"center"}
         >
           <Button
-            colorScheme="blue"
+            colorScheme="whatsapp"
             size={["md", "md", "lg", "lg", "lg"]}
-            leftIcon={<FloppyDisk />}
+            leftIcon={<WhatsappLogo />}
           >
-            Cadastre-se
-          </Button>
-          <Text>ou</Text>
-          <Button
-            colorScheme="green"
-            size={["md", "md", "lg", "lg", "lg"]}
-            leftIcon={<SignIn />}
-          >
-            Faça Login
+            Entre em contato
           </Button>
         </Flex>
       </Center>
@@ -129,7 +124,12 @@ export default function IndexPage() {
                 </CardBody>
                 <Divider borderColor={"gray.300"} />
                 <CardFooter p={3}>
-                  <Button variant="solid" colorScheme="blue" w={"100%"}>
+                  <Button
+                    variant="solid"
+                    colorScheme="blue"
+                    w={"100%"}
+                    onClick={() => navigate("/ecommerce")}
+                  >
                     Ver Planos
                   </Button>
                 </CardFooter>

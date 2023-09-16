@@ -20,6 +20,7 @@ import {
   FloppyDisk,
   House,
   Info,
+  List,
   PhoneCall,
   SignIn,
   SignOut,
@@ -27,6 +28,7 @@ import {
   Tag,
   User,
   UserList,
+  X,
 } from "@phosphor-icons/react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Scrollbars } from "react-custom-scrollbars-2";
@@ -84,24 +86,33 @@ export default function Layout({ children, pageIcon: Icon, pageTitle }: Props) {
             </Flex>
           </Flex>
 
-          <Flex
-            gap={5}
-            align={"center"}
-            w={["fit-content", "fit-content", "250px", "250px", "250px"]}
-          >
-            <Avatar size={"sm"} />
-            <Stack
-              spacing={4}
-              display={["none", "none", "flex", "flex", "flex"]}
+          <Flex gap={3}>
+            <Flex
+              gap={5}
+              align={"center"}
+              w={["fit-content", "fit-content", "250px", "250px", "250px"]}
             >
-              <Text fontWeight={600} lineHeight={"0"}>
-                NK Informática
-              </Text>
-              <Text fontWeight={300} lineHeight={"0"} fontSize={"xs"}>
-                40.526.622/0001-72
-              </Text>
-            </Stack>
+              <Avatar size={"sm"} />
+              <Stack
+                spacing={4}
+                display={["none", "none", "flex", "flex", "flex"]}
+              >
+                <Text fontWeight={600} lineHeight={"0"}>
+                  NK Informática
+                </Text>
+                <Text fontWeight={300} lineHeight={"0"} fontSize={"xs"}>
+                  40.526.622/0001-72
+                </Text>
+              </Stack>
+            </Flex>
           </Flex>
+
+          <IconButton
+            aria-label="show-menu"
+            icon={drawerOpen ? <X /> : <List />}
+            onClick={() => setDrawerOpen((prev) => !prev)}
+            display={["flex", "none", "none", "none", "none"]}
+          />
         </Flex>
       </Box>
 
@@ -109,14 +120,24 @@ export default function Layout({ children, pageIcon: Icon, pageTitle }: Props) {
         h={"calc(100% - 60px)"}
         maxH={"calc(100% - 60px)"}
         overflow={"hidden"}
+        position={"relative"}
       >
         <Flex
-          w={drawerOpen ? "280px" : "65px"}
+          w={[
+            "280px",
+            drawerOpen ? "280px" : "65px",
+            drawerOpen ? "280px" : "65px",
+            drawerOpen ? "280px" : "65px",
+            drawerOpen ? "280px" : "65px",
+          ]}
           justify={"center"}
           align={"center"}
           h={"100%"}
           transition={"all .3s"}
           flexShrink={0}
+          pos={["absolute", "initial", "initial", "initial", "initial"]}
+          zIndex={100}
+          marginLeft={[drawerOpen ? "0" : "-100%", 0, 0, 0, 0]}
         >
           <Box
             roundedRight={"20px"}
@@ -290,6 +311,7 @@ export default function Layout({ children, pageIcon: Icon, pageTitle }: Props) {
                 w={drawerOpen ? "280px" : "65px"}
                 transition={"all .3s"}
                 colorScheme="blackAlpha"
+                display={["none", "flex", "flex", "flex", "flex"]}
               />
             </Tooltip>
           </Box>
