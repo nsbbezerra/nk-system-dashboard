@@ -51,7 +51,14 @@ export default function Layout({ children, pageIcon: Icon, pageTitle }: Props) {
 
   return (
     <Box w={"100vw"} h={"100vh"} bg={"#fafafa"}>
-      <Box h={"60px"} bg="white" shadow={"md"} zIndex={100}>
+      <Box
+        h={"60px"}
+        bg="white"
+        shadow={"md"}
+        zIndex={100}
+        borderBottom={"1px"}
+        borderBottomColor={"gray.300"}
+      >
         <Flex
           justifyContent={"space-between"}
           pr={[3, 8, 8, 8, 8]}

@@ -1,5 +1,4 @@
 import {
-  ArrowRight,
   Desktop,
   Money,
   PaintBrushBroad,
@@ -14,13 +13,19 @@ import {
   Card,
   CardBody,
   Center,
+  Divider,
   Grid,
+  GridItem,
+  HStack,
   Heading,
+  Image,
   Stack,
   Text,
 } from "@chakra-ui/react";
+import templates from "../data/site-layouts.json";
 
 import EcommerceImage from "../assets/ecommerce.jpg";
+import { Link } from "react-router-dom";
 
 export default function Ecommerce() {
   return (
@@ -39,6 +44,12 @@ export default function Ecommerce() {
           <Heading fontFamily={"body"} color={"blue.900"}>
             Ecommerce
           </Heading>
+
+          <Box
+            w={"150px"}
+            borderBottom={"2px"}
+            borderBottomColor={"blue.900"}
+          />
 
           <Text fontSize={"xl"} maxW={"2xl"} textAlign={"center"}>
             Tenha seu negócio disponível a seus clientes 24 horas por dia, venda
@@ -65,7 +76,7 @@ export default function Ecommerce() {
               spacing={4}
               align={"center"}
               textAlign={"center"}
-              h="250px"
+              h="200px"
               justify={"center"}
             >
               <Box color={"blue.600"}>
@@ -78,9 +89,6 @@ export default function Ecommerce() {
                 Escolha um tema de sua preferência e deixe a sua loja com a
                 melhor experiência de compra.
               </Text>
-              <Button rightIcon={<ArrowRight />} size={"sm"}>
-                Ver temas
-              </Button>
             </Stack>
           </CardBody>
         </Card>
@@ -91,7 +99,7 @@ export default function Ecommerce() {
               spacing={4}
               align={"center"}
               textAlign={"center"}
-              h="250px"
+              h="200px"
               justify={"center"}
             >
               <Box color={"blue.600"}>
@@ -104,9 +112,6 @@ export default function Ecommerce() {
                 Diversos gateways de pagamentos disponíveis, escolha o da sua
                 preferência.
               </Text>
-              <Button rightIcon={<ArrowRight />} size={"sm"}>
-                Ver opções
-              </Button>
             </Stack>
           </CardBody>
         </Card>
@@ -117,7 +122,7 @@ export default function Ecommerce() {
               spacing={4}
               align={"center"}
               textAlign={"center"}
-              h="250px"
+              h="200px"
               justify={"center"}
             >
               <Box color={"blue.600"}>
@@ -130,9 +135,6 @@ export default function Ecommerce() {
                 Temos uma plataforma integrada de gestão e gerenciamento de
                 frete, cálculo, estimativa e rastreio.
               </Text>
-              <Button rightIcon={<ArrowRight />} size={"sm"}>
-                Veja mais
-              </Button>
             </Stack>
           </CardBody>
         </Card>
@@ -143,7 +145,7 @@ export default function Ecommerce() {
               spacing={4}
               align={"center"}
               textAlign={"center"}
-              h="250px"
+              h="200px"
               justify={"center"}
             >
               <Box color={"blue.600"}>
@@ -156,19 +158,81 @@ export default function Ecommerce() {
                 Dashboard de controle e gestão da sua loja virtual, estoque,
                 vendas, pagamentos, gestão financeira e fiscal.
               </Text>
-              <Button rightIcon={<ArrowRight />} size={"sm"}>
-                Veja mais
-              </Button>
             </Stack>
           </CardBody>
         </Card>
       </Grid>
 
-      <Center mt={8}>
-        <Button colorScheme="blue" size={"lg"}>
-          Crie sua loja agora
-        </Button>
-      </Center>
+      <HStack fontSize={"3xl"} color={"blue.900"} mt={8}>
+        <PaintBrushBroad />
+        <Heading fontFamily={"body"}>Temas</Heading>
+      </HStack>
+      <Box
+        w={"200px"}
+        borderBottom={"2px"}
+        borderBottomColor={"blue.900"}
+        my={2}
+      />
+      <Text fontSize={"xl"}>
+        Personalize a sua loja, deixe ela com a sua cara, temos diversas opções
+        de temas escolha uma do seu gosto, personalize com suas cores e sua
+        logo.
+      </Text>
+
+      <Stack spacing={3} mt={5}>
+        {templates.map((template) => (
+          <Box key={template.category}>
+            <Text fontWeight={300} fontSize={"2xl"}>
+              {template.category}
+            </Text>
+            <Grid
+              templateColumns={[
+                "repeat(1, 1fr)",
+                "repeat(1, 1fr)",
+                "repeat(2, 1fr)",
+                "repeat(3, 1fr)",
+                "repeat(4, 1fr)",
+              ]}
+              gap={[4, 8, 4, 8, 8]}
+              mt={3}
+            >
+              {template.templates.map((temp) => (
+                <GridItem key={temp.id}>
+                  <Card
+                    w="100%"
+                    shadow={"lg"}
+                    overflow={"hidden"}
+                    borderWidth={"1px"}
+                    borderColor={"gray.200"}
+                    h={"fit-content"}
+                  >
+                    <CardBody p={0}>
+                      <Image
+                        src={temp.thumbnail}
+                        w="100%"
+                        h={"220px"}
+                        objectFit={"cover"}
+                      />
+                      <Divider />
+                      <Stack p={3}>
+                        <Text>{temp.name}</Text>
+                      </Stack>
+                      <Divider />
+                      <Box p={2}>
+                        <Link to={temp.demo} target="_blank">
+                          <Button size={"sm"} w="100%" colorScheme="blue">
+                            Demonstração
+                          </Button>
+                        </Link>
+                      </Box>
+                    </CardBody>
+                  </Card>
+                </GridItem>
+              ))}
+            </Grid>
+          </Box>
+        ))}
+      </Stack>
     </Layout>
   );
 }

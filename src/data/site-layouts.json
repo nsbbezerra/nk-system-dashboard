@@ -1,0 +1,35 @@
+[
+  {
+    "category": "Bonik",
+    "templates": [
+      {
+        "category": "Bonik",
+        "name": "Market 1",
+        "demo": "https://bonik-react.vercel.app/market-1",
+        "thumbnail": "https://bonik-react.vercel.app/_next/image?url=%2Fassets%2Fimages%2Flanding%2Fpage-1.png&w=1920&q=75",
+        "id": "bonik-market-1"
+      },
+      {
+        "category": "Bonik",
+        "name": "Market 2",
+        "demo": "https://bonik-react.vercel.app/market-2",
+        "thumbnail": "https://bonik-react.vercel.app/_next/image?url=%2Fassets%2Fimages%2Flanding%2Fmarket-2.png&w=1920&q=75",
+        "id": "bonik-market-2"
+      },
+      {
+        "category": "Bonik",
+        "name": "Grocery 2",
+        "demo": "https://bonik-react.vercel.app/grocery-2",
+        "thumbnail": "https://bonik-react.vercel.app/_next/image?url=%2Fassets%2Fimages%2Flanding%2Fgrocery-2.png&w=1920&q=75",
+        "id": "bonik-grocery-2"
+      },
+      {
+        "category": "Bonik",
+        "name": "Health Beauty Shop",
+        "demo": "https://bonik-react.vercel.app/health-beauty",
+        "thumbnail": "https://bonik-react.vercel.app/_next/image?url=%2Fassets%2Fimages%2Flanding%2Fhealth-beauty.png&w=1080&q=75",
+        "id": "bonik-health-beauty-shop"
+      }
+    ]
+  }
+]
